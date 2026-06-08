@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartHomeaufZeit – Alle Links</title>
+<meta name="description" content="3D-Druck, Klipper, OrcaSlicer & Smart Home. Mein eBook, der Videokurs und alle wichtigen Links an einem Ort.">
+<meta property="og:title" content="SmartHomeaufZeit – Alle Links">
+<meta property="og:description" content="3D-Druck, Klipper & Smart Home. Alle Links an einem Ort.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0d10;
+    --bg-2:#15171c;
+    --card:#16181e;
+    --card-hover:#1d2028;
+    --border:#272a33;
+    --border-hl:#3a3e4a;
+    --text:#f3f4f6;
+    --muted:#9aa0ac;
+    --accent:#ff6b35;
+    --accent-soft:rgba(255,107,53,.12);
+    --radius:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:'Sora',system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.5;
+    min-height:100vh;
+    /* dezentes Blueprint-Raster, passend zum CAD/3D-Druck-Thema */
+    background-image:
+      radial-gradient(1200px 600px at 50% -10%, rgba(255,107,53,.10), transparent 60%),
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:auto, 32px 32px, 32px 32px;
+    background-position:center top, center, center;
+    background-attachment:fixed;
+    padding:0 18px;
+    overflow-x:hidden;
+  }
+  /* sanftes Vignette-Overlay, damit das Raster zu den Rändern verblasst */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:radial-gradient(circle at 50% 40%, transparent 30%, var(--bg) 90%);
+  }
+  .wrap{
+    position:relative;z-index:1;
+    max-width:480px;margin:0 auto;
+    padding:56px 0 40px;
+    display:flex;flex-direction:column;align-items:center;gap:14px;
+  }
+
+  /* Profil-Kopf */
+  .avatar{
+    width:84px;height:84px;border-radius:22px;
+    background:linear-gradient(145deg,#1d2028,#101116);
+    border:1px solid var(--border-hl);
+    display:grid;place-items:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.04);
+    animation:rise .6s ease both;
+  }
+  .avatar svg{width:42px;height:42px}
+  .handle{
+    font-weight:800;font-size:1.45rem;letter-spacing:-.02em;
+    margin-top:4px;animation:rise .6s .05s ease both;
+  }
+  .handle .at{color:var(--accent)}
+  .bio{
+    color:var(--muted);font-size:.95rem;text-align:center;max-width:340px;
+    animation:rise .6s .1s ease both;
+  }
+  .tags{
+    display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:2px;
+    animation:rise .6s .15s ease both;
+  }
+  .tag{
+    font-family:'IBM Plex Mono',monospace;font-size:.72rem;
+    color:var(--muted);border:1px solid var(--border);
+    padding:3px 9px;border-radius:99px;background:rgba(255,255,255,.02);
+  }
+
+  /* Featured: eBook */
+  .featured{
+    width:100%;margin-top:14px;text-decoration:none;color:inherit;
+    background:linear-gradient(160deg,#1a1c22,#121318);
+    border:1px solid var(--border-hl);border-radius:var(--radius);
+    padding:18px;display:flex;gap:16px;align-items:center;
+    position:relative;overflow:hidden;
+    box-shadow:0 16px 40px rgba(0,0,0,.45);
+    transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    animation:rise .6s .2s ease both;
+  }
+  .featured::after{
+    content:"";position:absolute;inset:0;border-radius:var(--radius);
+    background:linear-gradient(120deg,transparent 40%,var(--accent-soft));
+    opacity:0;transition:opacity .25s ease;pointer-events:none;
+  }
+  .featured:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 22px 50px rgba(255,107,53,.18)}
+  .featured:hover::after{opacity:1}
+  .featured:active{transform:translateY(-1px)}
+  .feat-badge{
+    position:absolute;top:12px;right:12px;font-family:'IBM Plex Mono',monospace;
+    font-size:.65rem;letter-spacing:.08em;color:var(--accent);
+    background:var(--accent-soft);border:1px solid rgba(255,107,53,.3);
+    padding:3px 8px;border-radius:99px;
+  }
+  .feat-cover{
+    flex:0 0 64px;height:84px;border-radius:10px;
+    background:linear-gradient(150deg,#23262f,#0e0f13);
+    border:1px solid var(--border);
+    display:flex;flex-direction:column;justify-content:flex-end;
+    padding:8px;gap:3px;
+  }
+  .feat-cover .line{height:3px;border-radius:2px;background:var(--border-hl)}
+  .feat-cover .line.a{width:80%}
+  .feat-cover .line.b{width:55%;background:var(--accent)}
+  .feat-body{flex:1;min-width:0}
+  .feat-kicker{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--accent);letter-spacing:.05em}
+  .feat-title{font-weight:700;font-size:1.02rem;line-height:1.25;margin:3px 0 5px}
+  .feat-meta{font-size:.82rem;color:var(--muted)}
+  .feat-price{font-weight:800;color:#fff}
+
+  /* Standard-Links */
+  .links{width:100%;display:flex;flex-direction:column;gap:11px;margin-top:4px}
+  .link{
+    --d:0ms;
+    text-decoration:none;color:var(--text);
+    background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+    padding:15px 16px;display:flex;align-items:center;gap:14px;
+    transition:transform .18s ease, background .18s ease, border-color .18s ease;
+    animation:rise .5s var(--d) ease both;
+  }
+  .link:hover{transform:translateY(-2px);background:var(--card-hover);border-color:var(--border-hl)}
+  .link:active{transform:translateY(0)}
+  .ico{
+    flex:0 0 38px;height:38px;border-radius:10px;
+    background:var(--bg-2);border:1px solid var(--border);
+    display:grid;place-items:center;color:var(--accent);
+  }
+  .ico svg{width:20px;height:20px}
+  .l-body{flex:1;min-width:0}
+  .l-title{font-weight:600;font-size:.98rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .l-sub{font-size:.8rem;color:var(--muted);margin-top:1px}
+  .ad{
+    font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.06em;
+    color:var(--muted);border:1px solid var(--border);border-radius:4px;
+    padding:1px 5px;text-transform:uppercase;
+  }
+  .arrow{color:var(--muted);flex:0 0 auto;transition:transform .18s ease,color .18s ease}
+  .link:hover .arrow{transform:translateX(3px);color:var(--text)}
+
+  footer{
+    margin-top:24px;text-align:center;color:var(--muted);font-size:.78rem;
+    animation:rise .6s .5s ease both;
+  }
+  footer a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border)}
+  footer a:hover{color:var(--text)}
+  .foot-links{margin-top:6px}
+
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+  <main class="wrap">
+
+    <!-- Profil -->
+    <div class="avatar" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b35" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5"/><path d="M12 12v10"/>
+      </svg>
+    </div>
+    <h1 class="handle"><span class="at">@</span>SmartHomeaufZeit</h1>
+    <p class="bio">3D-Druck, Klipper &amp; OrcaSlicer für Anfänger – plus Smart-Home-Projekte zum Nachdrucken.</p>
+    <div class="tags">
+      <span class="tag">#3ddruck</span>
+      <span class="tag">#klipper</span>
+      <span class="tag">#smarthome</span>
+    </div>
+
+    <!-- Featured: eBook -->
+    <a class="featured" href="https://gilliearnie.github.io/3ddruck-ebook/index.html">
+      <span class="feat-badge">eBOOK</span>
+      <div class="feat-cover" aria-hidden="true">
+        <span class="line a"></span><span class="line a"></span><span class="line b"></span>
+      </div>
+      <div class="feat-body">
+        <div class="feat-kicker">▸ MEIN GUIDE</div>
+        <div class="feat-title">3D-Druck meistern: Klipper &amp; OrcaSlicer</div>
+        <div class="feat-meta">11 Kapitel · PDF · <span class="feat-price">17 €</span></div>
+      </div>
+    </a>
+
+    <!-- Link-Liste -->
+    <nav class="links" aria-label="Meine Links">
+
+      <!-- VIDEOKURS (Affiliate) – Link unten ersetzen durch deinen Digistore24-Partnerlink -->
+      <a class="link" style="--d:.26s" href="https://www.digistore24.com/redir/320187/wenflo98c1/">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="15" rx="2"/><path d="m10 9 5 3-5 3z" fill="currentColor"/></svg>
+        </span>
+        <div class="l-body">
+          <div class="l-title">Videokurs: 3D-Druck lernen <span class="ad">Werbung</span></div>
+          <div class="l-sub">26 Lektionen · 4 davon gratis testen</div>
+        </div>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+
+      <!-- KLIPPER/MAINSAIL GUIDE – Link unten ersetzen -->
+      <a class="link" style="--d:.32s" href="https://gilliearnie.github.io/3ddruck-ebook/index.html">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </span>
+        <div class="l-body">
+          <div class="l-title">Klipper &amp; Mainsail Guide</div>
+          <div class="l-sub">Für Fortgeschrittene – Setup &amp; Tuning</div>
+        </div>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+
+      <!-- INSTAGRAM -->
+      <a class="link" style="--d:.38s" href="https://instagram.com/smarthome.auf.zeit">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </span>
+        <div class="l-body">
+          <div class="l-title">Instagram</div>
+          <div class="l-sub">@SmartHomeaufZeit</div>
+        </div>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+
+      <!-- OPTIONAL: weitere Kanäle. Block kopieren, Link & Texte anpassen, oder löschen. 
+      <a class="link" style="--d:.44s" href="#DEIN-LINK">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
+        </span>
+        <div class="l-body">
+          <div class="l-title">Weiterer Link</div>
+          <div class="l-sub">z. B. YouTube, TikTok, Newsletter …</div>
+        </div>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+-->
+    </nav>
+
+    <footer>
+      © 2026 · SmartHomeaufZeit
+      <div class="foot-links">
+        <a href="https://gilliearnie.github.io/3ddruck-ebook/impressum.html">Impressum</a>
+        &nbsp;·&nbsp;
+        <a href="https://gilliearnie.github.io/3ddruck-ebook/datenschutz.html">Datenschutz</a>
+      </div>
+    </footer>
+
+  </main>
+</body>
+</html>
